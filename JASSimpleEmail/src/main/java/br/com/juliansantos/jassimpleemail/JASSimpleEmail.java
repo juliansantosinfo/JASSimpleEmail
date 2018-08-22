@@ -311,6 +311,87 @@ public class JASSimpleEmail {
 
         return sent;
     }
+    
+    /**
+     * Sends e-mail using the <code>commons-email</code> library 
+     * and Gmail SMTP server.
+     * 
+     * @param userName
+     * @param password
+     * @param from
+     * @param to
+     * @param subject
+     * @param msg
+     * 
+     * @return the status of the sending, true to successfully sent message, if
+     * any exception occurred, returns false.
+     * 
+     * @throws EmailException 
+     */
+    public boolean sendFromGmail(String userName, String password, String from, String to, String subject, String msg) throws EmailException {
+        
+        SimpleEmail email = new SimpleEmail();
+        boolean sent = false;
+
+        email.setDebug(true);
+        email.setHostName("smtp.google.com");
+        email.setSmtpPort(465);
+        email.setAuthentication(userName, password);
+        email.setSSLOnConnect(true);
+        email.setStartTLSEnabled(true);
+        email.setFrom(from);
+        email.addTo(to);
+        email.setSubject(subject);
+        email.setMsg(msg);
+        sent = !email.send().isEmpty();
+
+        return sent;
+    }
+    
+    /**
+     * Sends e-mail with attachment using the <code>commons-email</code>
+     * library and Gmail SMTP server.
+     * 
+     * @param userName
+     * @param password
+     * @param from
+     * @param to
+     * @param subject
+     * @param msg
+     * @param file
+     * 
+     * @return the status of the sending, true to successfully sent message, if
+     * any exception occurred, returns false.
+     * 
+     * @throws EmailException 
+     */
+    public boolean sendFromGmailWithAttachment(String userName, String password, String from, String to, String subject, String msg, File file) throws EmailException {
+        
+        Thread.currentThread().setContextClassLoader(getClass().getClassLoader());
+
+        MultiPartEmail email = new MultiPartEmail();
+        boolean sent = false;
+
+        email.setDebug(true);
+        email.setHostName("smtp.google.com");
+        email.setSmtpPort(465);
+        email.setAuthentication(userName, password);
+        email.setSSLOnConnect(true);
+        email.setStartTLSEnabled(true);
+        email.setFrom(from);
+        email.addTo(to);
+        email.setSubject(subject);
+        email.setMsg(msg);
+
+        EmailAttachment attachment = new EmailAttachment();
+        attachment.setPath(attachment.getPath());
+        attachment.setDisposition(EmailAttachment.ATTACHMENT);
+        email.attach(attachment);
+
+        sent = !email.send().isEmpty();
+
+        return sent;
+    }
 
     // Getters and Setters.
     // ------------------------------------------------------------------------
