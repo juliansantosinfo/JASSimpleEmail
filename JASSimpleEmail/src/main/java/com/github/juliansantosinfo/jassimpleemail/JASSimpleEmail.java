@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2018 Julian
+ * Copyright (C) 2018 Julian A. Santos
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -29,7 +29,7 @@ import org.apache.commons.mail.SimpleEmail;
 /**
  * <code>JASSimpleEmail</code> is a library that makes it easy to send e-mail 
  * to the main free e-mail services.
- * @author Julian Santos
+ * @author Julian A. Santos
  * @since 22/08/2018
  * @version 0.01
  * @see <a href="https://github.com/juliansantosinfo/JASSimpleEmail">Github</a>
