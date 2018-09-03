@@ -1,9 +1,20 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Copyright (C) 2018 Julian
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package br.com.juliansantos.jassimpleemail;
+package com.github.juliansantosinfo.jassimpleemail;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -16,8 +27,12 @@ import org.apache.commons.mail.MultiPartEmail;
 import org.apache.commons.mail.SimpleEmail;
 
 /**
- *
+ * <code>JASSimpleEmail</code> is a library that makes it easy to send e-mail 
+ * to the main free e-mail services.
  * @author Julian Santos
+ * @since 22/08/2018
+ * @version 0.01
+ * @see <a href="https://github.com/juliansantosinfo/JASSimpleEmail">Github</a>
  */
 public class JASSimpleEmail {
 
@@ -311,25 +326,25 @@ public class JASSimpleEmail {
 
         return sent;
     }
-    
+
     /**
-     * Sends e-mail using the <code>commons-email</code> library 
-     * and Gmail SMTP server.
-     * 
+     * Sends e-mail using the <code>commons-email</code> library and Gmail SMTP
+     * server.
+     *
      * @param userName
      * @param password
      * @param from
      * @param to
      * @param subject
      * @param msg
-     * 
+     *
      * @return the status of the sending, true to successfully sent message, if
      * any exception occurred, returns false.
-     * 
-     * @throws EmailException 
+     *
+     * @throws EmailException
      */
     public boolean sendFromGmail(String userName, String password, String from, String to, String subject, String msg) throws EmailException {
-        
+
         SimpleEmail email = new SimpleEmail();
         boolean sent = false;
 
@@ -347,11 +362,11 @@ public class JASSimpleEmail {
 
         return sent;
     }
-    
+
     /**
-     * Sends e-mail with attachment using the <code>commons-email</code>
-     * library and Gmail SMTP server.
-     * 
+     * Sends e-mail with attachment using the <code>commons-email</code> library
+     * and Gmail SMTP server.
+     *
      * @param userName
      * @param password
      * @param from
@@ -359,14 +374,14 @@ public class JASSimpleEmail {
      * @param subject
      * @param msg
      * @param file
-     * 
+     *
      * @return the status of the sending, true to successfully sent message, if
      * any exception occurred, returns false.
-     * 
-     * @throws EmailException 
+     *
+     * @throws EmailException
      */
     public boolean sendFromGmailWithAttachment(String userName, String password, String from, String to, String subject, String msg, File file) throws EmailException {
-        
+
         Thread.currentThread().setContextClassLoader(getClass().getClassLoader());
 
         MultiPartEmail email = new MultiPartEmail();
@@ -395,162 +410,172 @@ public class JASSimpleEmail {
 
     // Getters and Setters.
     // ------------------------------------------------------------------------
-    
     /**
      * Gets the host name of the SMTP server.
+     *
      * @return host name.
      */
     public String getHostName() {
         return hostName;
     }
-    
+
     /**
-     * 
-     * @param hostName 
+     *
+     * @param hostName
      */
     public void setHostName(String hostName) {
         this.hostName = hostName;
     }
-    
+
     /**
      * Gets the listening port of the SMTP server.
+     *
      * @return smtp port.
      */
     public int getSmtpPort() {
         return smtpPort;
     }
-    
+
     /**
-     * 
-     * @param smtpPort 
+     *
+     * @param smtpPort
      */
     public void setSmtpPort(int smtpPort) {
         this.smtpPort = smtpPort;
     }
-    
+
     /**
      * Gets user name for authentication in smtp server.
+     *
      * @return user name.
      */
     public String getUserName() {
         return userName;
     }
-    
+
     /**
-     * 
-     * @param userName 
+     *
+     * @param userName
      */
     public void setUserName(String userName) {
         this.userName = userName;
     }
-    
+
     /**
      * Gets the password for authentication in smtp server.
+     *
      * @return password.
      */
     public String getPassword() {
         return password;
     }
-    
+
     /**
-     * 
-     * @param password 
+     *
+     * @param password
      */
     public void setPassword(String password) {
         this.password = password;
     }
-    
+
     /**
      * Gets the sender of the email.
+     *
      * @return sender of the email.
      */
     public String getFrom() {
         return from;
     }
-    
+
     /**
-     * 
-     * @param from 
+     *
+     * @param from
      */
     public void setFrom(String from) {
         this.from = from;
     }
-    
+
     /**
      * Get the list of "To" addresses.
+     *
      * @return "To" addresses.
      */
     public String getTo() {
         return to;
     }
-    
+
     /**
-     * 
-     * @param to 
+     *
+     * @param to
      */
     public void setTo(String to) {
         this.to = to;
     }
-    
+
     /**
      * Gets the subject of the email.
+     *
      * @return subject of the email.
      */
     public String getSubject() {
         return subject;
     }
-    
+
     /**
-     * 
-     * @param subject 
+     *
+     * @param subject
      */
     public void setSubject(String subject) {
         this.subject = subject;
     }
-    
+
     /**
      * Returns the Message.
+     *
      * @return body of the email.
      */
     public String getMsg() {
         return msg;
     }
-    
+
     /**
-     * 
-     * @param msg 
+     *
+     * @param msg
      */
     public void setMsg(String msg) {
         this.msg = msg;
     }
-    
+
     /**
-     * Returns whether SSL/TLS encryption for the transport is currently enabled (SMTPS/POPS).
+     * Returns whether SSL/TLS encryption for the transport is currently enabled
+     * (SMTPS/POPS).
+     *
      * @return true if SSL enabled for the transport.
      */
     public boolean isSslOnConnect() {
         return sslOnConnect;
     }
-    
+
     /**
-     * 
-     * @param sslOnConnect 
+     *
+     * @param sslOnConnect
      */
     public void setSslOnConnect(boolean sslOnConnect) {
         this.sslOnConnect = sslOnConnect;
     }
-    
+
     /**
      * Gets whether the client is configured to try to enable STARTTLS.
+     *
      * @return true if SSL enabled.
      */
     public boolean isTslOnConnect() {
         return tslOnConnect;
     }
-    
+
     /**
-     * 
-     * @param tslOnConnect 
+     *
+     * @param tslOnConnect
      */
     public void setTslOnConnect(boolean tslOnConnect) {
         this.tslOnConnect = tslOnConnect;
