@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.github.juliansantosinfo</groupId>
     <artifactId>JASSimpleEmail</artifactId>
-    <version>0.01</version>
+    <version>0.02</version>
     <packaging>jar</packaging>
     <name>JASSimpleEmail</name>
     <description>JASSimpleEmail is a library that makes it easy to send e-mail to the main free e-mail services.</description>
@@ -41,7 +41,8 @@
         <repository>
             <id>sonatype-nexus-staging</id>
             <name>Sonatype Nexus release repository</name>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+            <url>https://oss.sonatype.org/content/repositories/releases/</url>
+            <!-- <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url> -->
         </repository>
     </distributionManagement>
     
